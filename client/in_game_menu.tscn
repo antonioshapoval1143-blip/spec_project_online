@@ -1,0 +1,104 @@
+[gd_scene load_steps=2 format=3 uid="uid://dyst3wnomo2cx"]
+
+[ext_resource type="Script" uid="uid://ci6siwtqddexu" path="res://gbm.gd" id="1_ddb4r"]
+
+[node name="InGameMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.08468998, 0.08468991, 0.08468994, 0.80784315)
+
+[node name="SW" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -821.0
+offset_top = -382.0
+offset_right = -221.0
+offset_bottom = -283.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 60
+text = "*Standart Weapon"
+
+[node name="FW" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -817.0
+offset_top = -234.0
+offset_right = -221.0
+offset_bottom = -135.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 60
+text = "*Flame Weapon"
+
+[node name="CW" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -817.0
+offset_top = -63.0
+offset_right = -221.0
+offset_bottom = 35.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 60
+text = "*Cryo Weapon"
+
+[node name="EW" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -817.0
+offset_top = 109.0
+offset_right = -221.0
+offset_bottom = 207.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 60
+text = "*Elec Weapon"
+
+[node name="GBM" type="Button" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 500.0
+offset_top = 364.0
+offset_right = 868.0
+offset_bottom = 477.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 65
+text = "Back to Menu"
+script = ExtResource("1_ddb4r")
+
+[connection signal="pressed" from="GBM" to="GBM" method="_on_pressed"]

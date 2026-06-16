@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://cene4p6hmryf"]
+
+[ext_resource type="Script" path="res://Warning.gd" id="1_ra63v"]
+[ext_resource type="Texture2D" uid="uid://ydi5drb7waxx" path="res://warning/warning.png" id="2_b86fp"]
+[ext_resource type="Texture2D" uid="uid://uh32w8twrp1v" path="res://warning/exclamation.png" id="3_lyt1f"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pwson"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_b86fp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_lyt1f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_b86fp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_lyt1f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_b86fp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_lyt1f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_b86fp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_lyt1f")
+}],
+"loop": false,
+"name": &"default",
+"speed": 3.0
+}]
+
+[node name="Warning" type="Node2D"]
+texture_filter = 1
+scale = Vector2(6, 6)
+script = ExtResource("1_ra63v")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.733333, 0, 0, 1)
+sprite_frames = SubResource("SpriteFrames_pwson")
+frame = 7
+frame_progress = 1.0

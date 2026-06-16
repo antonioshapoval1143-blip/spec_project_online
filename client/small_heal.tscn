@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://tdg2xd4yh8t6"]
+
+[ext_resource type="Script" path="res://health_up.gd" id="1_fky8h"]
+[ext_resource type="Texture2D" uid="uid://rpi1pq7n0tr5" path="res://heals/Pill.png" id="2_7hkos"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4avyp"]
+size = Vector2(13, 7.16667)
+
+[node name="Small Heal" type="Area2D"]
+texture_filter = 1
+scale = Vector2(6, 6)
+script = ExtResource("1_fky8h")
+heal_points = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.0833333)
+shape = SubResource("RectangleShape2D_4avyp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_7hkos")

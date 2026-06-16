@@ -1,0 +1,145 @@
+[gd_scene load_steps=5 format=3 uid="uid://dnu47ird3nj6e"]
+
+[ext_resource type="Script" uid="uid://c3pglmxojblub" path="res://mp_lobby.gd" id="1_8oc13"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xflfq"]
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_u0iwr"]
+font_size = 55
+
+[sub_resource type="LabelSettings" id="LabelSettings_gw2b7"]
+font_size = 55
+
+[node name="MPLobby" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8oc13")
+
+[node name="CheckBox" type="CheckBox" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 229.0
+offset_top = -330.0
+offset_right = 661.0
+offset_bottom = -219.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 50
+text = "Ready"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 225.0
+offset_top = 137.0
+offset_right = 639.0
+offset_bottom = 246.0
+text = "player1"
+label_settings = SubResource("LabelSettings_xflfq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -662.0
+offset_top = 137.0
+offset_right = -248.0
+offset_bottom = 246.0
+grow_horizontal = 0
+text = "player2"
+label_settings = SubResource("LabelSettings_xflfq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 225.0
+offset_top = 275.0
+offset_right = 639.0
+offset_bottom = 384.0
+text = "player"
+label_settings = SubResource("LabelSettings_xflfq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -662.0
+offset_top = 275.0
+offset_right = -248.0
+offset_bottom = 384.0
+grow_horizontal = 0
+text = "player"
+label_settings = SubResource("LabelSettings_xflfq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect1" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 345.0
+offset_top = 426.0
+offset_right = 522.0
+offset_bottom = 530.0
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -540.0
+offset_top = 426.0
+offset_right = -363.0
+offset_bottom = 530.0
+grow_horizontal = 0
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -212.0
+offset_top = 208.0
+offset_right = 212.0
+offset_bottom = 360.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Lobby code"
+label_settings = SubResource("LabelSettings_u0iwr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="code" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -65.0
+offset_top = -76.0
+offset_right = 65.0
+grow_horizontal = 2
+grow_vertical = 0
+label_settings = SubResource("LabelSettings_gw2b7")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true

@@ -1,0 +1,61 @@
+[gd_scene load_steps=12 format=3 uid="uid://dadg0erctwlqf"]
+
+[ext_resource type="Script" uid="uid://bkecf7bmowh3y" path="res://Explosion.gd" id="1_licso"]
+[ext_resource type="Texture2D" uid="uid://c4cl0oge3b7kr" path="res://explotion/explosion-1-b-1.png" id="2_4gt4e"]
+[ext_resource type="Texture2D" uid="uid://c15cf71t882fq" path="res://explotion/explosion-1-b-2.png" id="3_5b4fr"]
+[ext_resource type="Texture2D" uid="uid://b00uwqx0ybnj1" path="res://explotion/explosion-1-b-3.png" id="4_dvp22"]
+[ext_resource type="Texture2D" uid="uid://c7mcp8unn33mq" path="res://explotion/explosion-1-b-4.png" id="5_uj4ha"]
+[ext_resource type="Texture2D" uid="uid://dfscrbaqnxn0r" path="res://explotion/explosion-1-b-5.png" id="6_2b6ff"]
+[ext_resource type="Texture2D" uid="uid://dwbkjpavkbxlr" path="res://explotion/explosion-1-b-6.png" id="7_ndu0b"]
+[ext_resource type="Texture2D" uid="uid://3latx5r8kjow" path="res://explotion/explosion-1-b-7.png" id="8_nohm4"]
+[ext_resource type="Texture2D" uid="uid://dxvrnpbgihsdc" path="res://explotion/explosion-1-b-8.png" id="9_g7cj2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0d60n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_4gt4e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_5b4fr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_dvp22")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_uj4ha")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2b6ff")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ndu0b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_nohm4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_g7cj2")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c8bax"]
+radius = 28.4429
+
+[node name="Explosion" type="Node2D"]
+texture_filter = 1
+scale = Vector2(4, 4)
+script = ExtResource("1_licso")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_0d60n")
+frame = 7
+frame_progress = 1.0
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_c8bax")

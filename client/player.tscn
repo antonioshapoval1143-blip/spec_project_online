@@ -1,0 +1,167 @@
+[gd_scene load_steps=19 format=3 uid="uid://imh4spvsr650"]
+
+[ext_resource type="Texture2D" uid="uid://d2ua4ijrgrnkc" path="res://player_sprites/idle.png" id="1_2qnkg"]
+[ext_resource type="Script" uid="uid://cs66dljeg2dl1" path="res://Player.gd" id="1_16na7"]
+[ext_resource type="Texture2D" uid="uid://duegll551ed0m" path="res://player_sprites/jump.png" id="2_hxbma"]
+[ext_resource type="Texture2D" uid="uid://doe37mxk21yr0" path="res://player_sprites/Hit.png" id="2_vf8ro"]
+[ext_resource type="Texture2D" uid="uid://creowfygs40xb" path="res://player_sprites/run1.png" id="3_ehnei"]
+[ext_resource type="Texture2D" uid="uid://bylh82ithwwn2" path="res://player_sprites/run2.png" id="4_vhuyq"]
+[ext_resource type="Texture2D" uid="uid://0y7xulbs7yor" path="res://player_sprites/run3.png" id="5_t0ban"]
+[ext_resource type="Texture2D" uid="uid://3xhytjuuculk" path="res://player_sprites/run4.png" id="6_nthj8"]
+[ext_resource type="Texture2D" uid="uid://bu7rpyek5xmc2" path="res://player_sprites/shoot.png" id="7_hlelr"]
+[ext_resource type="Texture2D" uid="uid://bfg08edlefkcu" path="res://player_sprites/player-shoot1.png" id="8_t2w6l"]
+[ext_resource type="Texture2D" uid="uid://dl7hq6r2b0bly" path="res://player_sprites/player-shoot2.png" id="9_y6b8x"]
+[ext_resource type="Texture2D" uid="uid://byuj5ahowajog" path="res://player_sprites/player-shoot3.png" id="10_i0g1j"]
+[ext_resource type="Texture2D" uid="uid://crrk82w51j0l" path="res://player_sprites/player-shoot4.png" id="11_rmlhf"]
+[ext_resource type="PackedScene" path="res://in_game_menu.tscn" id="14_bwjto"]
+
+[sub_resource type="PackedScene" id="PackedScene_bwjto"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bv4vq"]
+atlas = ExtResource("2_vf8ro")
+region = Rect2(0, 0, 30, 29)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_taphk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bv4vq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_vf8ro")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_vf8ro")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bv4vq")
+}],
+"loop": true,
+"name": &"get_hit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_2qnkg")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hxbma")
+}],
+"loop": false,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ehnei")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_vhuyq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_t0ban")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_nthj8")
+}],
+"loop": false,
+"name": &"run",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_hlelr")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_t2w6l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_y6b8x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_i0g1j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_rmlhf")
+}],
+"loop": false,
+"name": &"shoot_run",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vsgxw"]
+size = Vector2(16, 23)
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+scale = Vector2(6, 6)
+script = ExtResource("1_16na7")
+bullet_scene = SubResource("PackedScene_bwjto")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -1.93715e-07)
+sprite_frames = SubResource("SpriteFrames_taphk")
+animation = &"shoot"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+texture_filter = 2
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_vsgxw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+texture = ExtResource("1_2qnkg")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+visible = false
+enabled = false
+drag_left_margin = 0.4
+drag_top_margin = 0.88
+drag_right_margin = 0.4
+drag_bottom_margin = 0.88
+
+[node name="HealthBar" type="ColorRect" parent="."]
+visible = false
+offset_left = -154.0
+offset_top = -85.0
+offset_right = -148.0
+offset_bottom = -46.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect" type="ColorRect" parent="HealthBar"]
+visible = false
+layout_mode = 0
+offset_top = -1.0
+offset_right = 6.0
+offset_bottom = 41.0
+color = Color(0, 0, 0, 1)
+
+[node name="HealthFill" type="ColorRect" parent="HealthBar"]
+visible = false
+layout_direction = 1
+layout_mode = 1
+offset_left = 5.0
+offset_top = 39.3333
+offset_right = 9.0
+offset_bottom = 76.3333
+rotation = -3.14159
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(13.6667, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 1000
+
+[node name="InGameMenu" parent="CanvasLayer" instance=ExtResource("14_bwjto")]
+visible = false

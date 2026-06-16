@@ -1,0 +1,96 @@
+[gd_scene load_steps=2 format=3 uid="uid://2lpnn1euhbgw"]
+
+[ext_resource type="Script" uid="uid://8cgwm5864624" path="res://save_game.gd" id="1_csf3h"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_csf3h")
+
+[node name="CheckButton" type="CheckButton" parent="."]
+layout_mode = 0
+offset_left = 156.0
+offset_top = 103.0
+offset_right = 453.0
+offset_bottom = 174.0
+theme_override_font_sizes/font_size = 45
+button_pressed = true
+text = "Local Saves"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -765.5
+offset_top = -326.25
+offset_right = 765.5
+offset_bottom = -105.75
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 55
+text = "SAVE 1"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -765.5
+offset_top = -70.25
+offset_right = 765.5
+offset_bottom = 150.25
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 55
+text = "SAVE 2"
+
+[node name="Button3" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -765.5
+offset_top = 193.75
+offset_right = 765.5
+offset_bottom = 414.25
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 55
+text = "SAVE 3"
+
+[node name="Button4" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -587.0
+offset_top = 75.0
+offset_right = -232.8125
+offset_bottom = 153.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 40
+text = "Cancel"
+
+[node name="Error" type="AcceptDialog" parent="."]
+oversampling_override = 1.0
+title = "Error!"
+initial_position = 1
+size = Vector2i(262, 100)
+dialog_text = "You're offline! Check the server!"
+dialog_close_on_escape = false
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="Button4" to="." method="_on_button_4_pressed"]

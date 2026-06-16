@@ -1,0 +1,175 @@
+[gd_scene load_steps=6 format=3 uid="uid://0dpbum4m31q4"]
+
+[ext_resource type="Script" uid="uid://cyv5crjig0tpm" path="res://control.gd" id="1_1sdat"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_af5xl"]
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_s8vfw"]
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_1sdat"]
+line_spacing = -15.0
+font_size = 35
+
+[sub_resource type="LabelSettings" id="LabelSettings_pywa0"]
+font_size = 35
+
+[node name="Control" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1sdat")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.23392546, 0.23392546, 0.23392543, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -461.0
+offset_top = -399.75
+offset_right = 461.0
+offset_bottom = -288.25
+grow_horizontal = 2
+grow_vertical = 2
+text = "Well done!
+You win!"
+label_settings = SubResource("LabelSettings_af5xl")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -185.0
+offset_top = -252.0
+offset_right = 185.0
+offset_bottom = -132.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "You`ve recieved:"
+label_settings = SubResource("LabelSettings_s8vfw")
+vertical_alignment = 2
+
+[node name="Scores" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -185.0
+offset_top = -132.0
+offset_right = 185.0
+offset_bottom = -63.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_s8vfw")
+horizontal_alignment = 1
+
+[node name="Continue" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 185.0
+offset_top = 218.0
+offset_right = 607.0
+offset_bottom = 323.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 45
+text = "Continue"
+
+[node name="BtM" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -606.0
+offset_top = 218.0
+offset_right = -184.0
+offset_bottom = 323.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 45
+text = "Back to Menu"
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
+oversampling_override = 1.0
+title = ""
+initial_position = 1
+size = Vector2i(400, 125)
+ok_button_text = "Yes"
+dialog_text = "Need to save your game?"
+cancel_button_text = "No"
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -151.5
+offset_top = -28.0
+offset_right = 151.5
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -86.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "You also recieved
+new weapon:"
+label_settings = SubResource("LabelSettings_1sdat")
+horizontal_alignment = 1
+
+[node name="Wep_label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 88.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_pywa0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="BtM" to="." method="_on_bt_m_pressed"]
+[connection signal="canceled" from="ConfirmationDialog" to="." method="_on_confirmation_dialog_canceled"]
+[connection signal="close_requested" from="ConfirmationDialog" to="." method="_on_confirmation_dialog_close_requested"]
+[connection signal="confirmed" from="ConfirmationDialog" to="." method="_on_confirmation_dialog_confirmed"]

@@ -1,0 +1,164 @@
+[gd_scene load_steps=2 format=3 uid="uid://st05qurgrsd4"]
+
+[ext_resource type="Script" uid="uid://c08j8thx1782r" path="res://load_menu.gd" id="1_ov7bu"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ov7bu")
+
+[node name="CheckButton" type="CheckButton" parent="."]
+layout_mode = 0
+offset_left = 156.0
+offset_top = 103.0
+offset_right = 453.0
+offset_bottom = 174.0
+theme_override_font_sizes/font_size = 45
+text = "Local Saves"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -765.5
+offset_top = -326.25
+offset_right = 765.5
+offset_bottom = -105.75
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 55
+text = "SAVE 1"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -765.5
+offset_top = -70.25
+offset_right = 765.5
+offset_bottom = 150.25
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 55
+text = "SAVE 2"
+
+[node name="Button3" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -765.5
+offset_top = 193.75
+offset_right = 765.5
+offset_bottom = 414.25
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 55
+text = "SAVE 3"
+
+[node name="Button4" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -587.0
+offset_top = 75.0
+offset_right = -232.81201
+offset_bottom = 153.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 40
+text = "Back to menu"
+
+[node name="Button5" type="Button" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -587.0
+offset_top = 75.0
+offset_right = -232.81201
+offset_bottom = 153.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 40
+text = "Delete"
+
+[node name="Control" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -942.0
+offset_top = -248.0
+offset_right = -785.0
+offset_bottom = 362.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 67.0
+offset_top = 540.0
+offset_right = 102.0
+offset_bottom = 575.0
+toggle_mode = true
+
+[node name="Button2" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 67.0
+offset_top = 266.0
+offset_right = 102.0
+offset_bottom = 301.0
+toggle_mode = true
+
+[node name="Button3" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 67.0
+offset_top = 22.0
+offset_right = 102.0
+offset_bottom = 57.0
+toggle_mode = true
+
+[node name="CheckButton2" type="CheckButton" parent="."]
+layout_mode = 0
+offset_left = 725.0
+offset_top = 103.0
+offset_right = 1086.0
+offset_bottom = 174.0
+theme_override_font_sizes/font_size = 45
+text = "Delete Save"
+alignment = 2
+
+[node name="Error" type="AcceptDialog" parent="."]
+oversampling_override = 1.0
+title = "Error!"
+initial_position = 1
+size = Vector2i(262, 100)
+dialog_text = "No save here."
+dialog_close_on_escape = false
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="Button4" to="." method="_on_button_4_pressed"]
+[connection signal="pressed" from="Button5" to="." method="_on_button_5_pressed"]
+[connection signal="button_down" from="Control/Button" to="." method="_on_button_button_down"]
+[connection signal="button_down" from="Control/Button2" to="." method="_on_button_2_button_down"]
+[connection signal="button_down" from="Control/Button3" to="." method="_on_button_3_button_down"]
+[connection signal="pressed" from="CheckButton2" to="." method="_on_check_button_2_pressed"]
+[connection signal="confirmed" from="Error" to="." method="_on_error_confirmed"]

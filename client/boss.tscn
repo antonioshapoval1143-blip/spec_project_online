@@ -1,0 +1,99 @@
+[gd_scene load_steps=14 format=3 uid="uid://ycvyf2vlhk2f"]
+
+[ext_resource type="Script" uid="uid://cgqg04gg8nwoc" path="res://boss.gd" id="1_24ck0"]
+[ext_resource type="Texture2D" uid="uid://72a06ebqxkh7" path="res://boss/frame1.png" id="1_kyuv7"]
+[ext_resource type="Texture2D" uid="uid://w88ggwuxtc5g" path="res://boss/frame2.png" id="2_1fpvl"]
+[ext_resource type="PackedScene" uid="uid://cr70tv2c3mq4b" path="res://boss_projectile.tscn" id="2_k01a5"]
+[ext_resource type="PackedScene" uid="uid://cene4p6hmryf" path="res://warning.tscn" id="3_8dtuq"]
+[ext_resource type="Texture2D" uid="uid://kpxxo1d2f4ll" path="res://boss/frame3.png" id="3_q0qtm"]
+[ext_resource type="Texture2D" uid="uid://haignfqtvoen" path="res://boss/frame4.png" id="4_ln3qr"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sgiok"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_kyuv7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_1fpvl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_q0qtm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ln3qr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ak812"]
+size = Vector2(139.333, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p3udx"]
+size = Vector2(7.08333, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wse4r"]
+size = Vector2(5.33333, 27.125)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pxqr4"]
+size = Vector2(11.1667, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_htxx8"]
+size = Vector2(10, 18.583351)
+
+[node name="Boss" type="CharacterBody2D" node_paths=PackedStringArray("area_node")]
+texture_filter = 1
+scale = Vector2(6, 6)
+script = ExtResource("1_24ck0")
+projectile_scene = ExtResource("2_k01a5")
+warning_scene = ExtResource("3_8dtuq")
+explosion_scene = ExtResource("2_k01a5")
+area_node = NodePath("Area2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_sgiok")
+frame_progress = 0.896543
+flip_h = true
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(-43.5, -1)
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-124.167, 22.8333)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_ak812")
+
+[node name="Area2D2" type="Area2D" parent="."]
+position = Vector2(-51.1667, 23.1667)
+
+[node name="Hitbox1" type="CollisionShape2D" parent="Area2D2"]
+shape = SubResource("RectangleShape2D_p3udx")
+debug_color = Color(0.999278, 0, 0.118191, 0.42)
+
+[node name="Area2D3" type="Area2D" parent="."]
+position = Vector2(-0.833333, 8.66667)
+
+[node name="Hitbox2" type="CollisionShape2D" parent="Area2D3"]
+position = Vector2(0, -8.77083)
+shape = SubResource("RectangleShape2D_wse4r")
+debug_color = Color(0.989618, 0, 0.288312, 0.42)
+
+[node name="Area2D4" type="Area2D" parent="."]
+position = Vector2(3.66667, -0.333333)
+
+[node name="Hurtbox" type="CollisionShape2D" parent="Area2D4"]
+shape = SubResource("RectangleShape2D_pxqr4")
+debug_color = Color(0.443401, 0.597997, 0, 0.42)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-43.5, 13.8333, -41, 32, 10.8333, 31.8333, 10, -13.5, -1.83333, -13.5, -2, 13.8333)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Shield" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-48.833336, 23.125008)
+shape = SubResource("RectangleShape2D_htxx8")

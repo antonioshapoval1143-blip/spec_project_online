@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://cchxpp5j4l2kn"]
+
+[ext_resource type="Script" uid="uid://dq223h1fgwiq4" path="res://enemy_projectile.gd" id="1_45wn4"]
+[ext_resource type="Texture2D" uid="uid://drm0625oqoay2" path="res://enemy_projectile/frame1.png" id="2_hfw1n"]
+[ext_resource type="Texture2D" uid="uid://dykgan2unwopm" path="res://enemy_projectile/frame2.png" id="3_let65"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iur74"]
+radius = 3.33333
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_squ01"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hfw1n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_let65")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[node name="Enemy_Projectile" type="CharacterBody2D"]
+texture_filter = 1
+scale = Vector2(6, 6)
+collision_layer = 0
+script = ExtResource("1_45wn4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_iur74")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0.5, -0.5)
+sprite_frames = SubResource("SpriteFrames_squ01")
+frame_progress = 0.934262

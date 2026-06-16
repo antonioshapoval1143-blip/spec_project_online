@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dthldh5c03h6w"]
+
+[ext_resource type="Script" uid="uid://c2efqlcuftc0l" path="res://online_projectile.gd" id="1_fr0we"]
+[ext_resource type="Texture2D" uid="uid://d24b0sioivl0x" path="res://player_sprites/shot.png" id="2_j655u"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b6imb"]
+radius = 2.12766
+height = 24.9999
+
+[node name="OnlineProjectile" type="CharacterBody2D"]
+texture_filter = 1
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("1_fr0we")
+is_owned_by_local_player = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(11.4, 1.04)
+shape = SubResource("CapsuleShape2D_b6imb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(6, 6)
+texture = ExtResource("2_j655u")

@@ -1,0 +1,78 @@
+[gd_scene load_steps=14 format=3 uid="uid://cr70tv2c3mq4b"]
+
+[ext_resource type="Script" uid="uid://7stya1ehi3v" path="res://boss_projectile.gd" id="1_bevbb"]
+[ext_resource type="Texture2D" uid="uid://c5felw2eeufk7" path="res://M20 Thick Rocket.png" id="2_8pjfw"]
+[ext_resource type="PackedScene" uid="uid://dadg0erctwlqf" path="res://explosion.tscn" id="2_k4eke"]
+[ext_resource type="Texture2D" uid="uid://6we377x743ee" path="res://boom/explosion-1.png" id="3_qeot3"]
+[ext_resource type="Texture2D" uid="uid://bvp2uubr30nbm" path="res://boom/explosion-2.png" id="4_mjvvs"]
+[ext_resource type="Texture2D" uid="uid://co731nno4tmo3" path="res://boom/explosion-3.png" id="5_hwa44"]
+[ext_resource type="Texture2D" uid="uid://dii02kvn6nonp" path="res://boom/explosion-4.png" id="6_ncpem"]
+[ext_resource type="Texture2D" uid="uid://2gu65kd4ou5m" path="res://boom/explosion-5.png" id="7_o7t18"]
+[ext_resource type="Texture2D" uid="uid://dmjktfe3vucql" path="res://boom/explosion-6.png" id="8_s70ft"]
+[ext_resource type="Texture2D" uid="uid://ddh2b56av4yt8" path="res://boom/explosion-7.png" id="9_5ngmi"]
+[ext_resource type="Texture2D" uid="uid://ca6ti8t8p73vx" path="res://boom/explosion-8.png" id="10_0ane5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p32la"]
+size = Vector2(30, 6.83333)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rhgdm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_8pjfw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_qeot3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_mjvvs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_hwa44")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ncpem")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_o7t18")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_s70ft")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_5ngmi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_0ane5")
+}],
+"loop": false,
+"name": &"destroyed",
+"speed": 20.0
+}]
+
+[node name="boss_projectile" type="CharacterBody2D"]
+texture_filter = 1
+rotation = 3.1415927
+scale = Vector2(6, 6)
+collision_layer = 2
+script = ExtResource("1_bevbb")
+death_effect_scene = ExtResource("2_k4eke")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.583333)
+shape = SubResource("RectangleShape2D_p32la")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_8pjfw")
+flip_h = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_rhgdm")
+
+[node name="Node" type="Node" parent="."]

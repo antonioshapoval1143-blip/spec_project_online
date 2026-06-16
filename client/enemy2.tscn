@@ -1,0 +1,140 @@
+[gd_scene load_steps=22 format=3 uid="uid://de73pvq006dx"]
+
+[ext_resource type="Script" uid="uid://bcptsjiphtovj" path="res://enemy2.gd" id="1_otuyq"]
+[ext_resource type="Shader" uid="uid://mnnlqh4na6k6" path="res://test.gdshader" id="2_s60n1"]
+[ext_resource type="PackedScene" uid="uid://cchxpp5j4l2kn" path="res://enemy_projectile.tscn" id="2_vfdkh"]
+[ext_resource type="Texture2D" uid="uid://c8n6cap6tah2l" path="res://enemy1/enemy1.png" id="3_8txs1"]
+[ext_resource type="PackedScene" uid="uid://q6gd0o13lmff" path="res://big_heal.tscn" id="3_i8hhf"]
+[ext_resource type="Texture2D" uid="uid://cvis8kryju3i0" path="res://enemy_death/enemy-death1.png" id="4_1gyb0"]
+[ext_resource type="Texture2D" uid="uid://weqeikghoq7h" path="res://enemy1/enemy2.png" id="4_quxnl"]
+[ext_resource type="PackedScene" uid="uid://bly4hyim766jc" path="res://heal.tscn" id="4_uvehj"]
+[ext_resource type="PackedScene" uid="uid://tdg2xd4yh8t6" path="res://small_heal.tscn" id="5_fe6aj"]
+[ext_resource type="Texture2D" uid="uid://dbh1dvsbv1w4t" path="res://enemy_death/enemy-death2.png" id="5_geben"]
+[ext_resource type="Texture2D" uid="uid://d2j1wywpno850" path="res://enemy_death/enemy-death3.png" id="6_kp830"]
+[ext_resource type="Texture2D" uid="uid://b3sikqb6888lb" path="res://enemy_death/enemy-death4.png" id="7_bnltp"]
+[ext_resource type="Texture2D" uid="uid://clm3tgqko5732" path="res://enemy_death/enemy-death5.png" id="8_217f7"]
+[ext_resource type="Texture2D" uid="uid://byjns57tq6e2m" path="res://enemy_death/enemy-death6.png" id="9_2bjv1"]
+[ext_resource type="Texture2D" uid="uid://b5c2kwou6lk8c" path="res://enemy_death/enemy-death7.png" id="10_v8nxo"]
+[ext_resource type="Texture2D" uid="uid://byw41k61pjoe" path="res://enemy_death/enemy-death8.png" id="11_66dq7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k11hj"]
+shader = ExtResource("2_s60n1")
+shader_parameter/from_color1 = Color(0.225, 0, 0.698, 0)
+shader_parameter/from_color2 = Color(0.225, 0.38, 0.984, 1)
+shader_parameter/to_color1 = Color(0.698, 0, 0.125, 0)
+shader_parameter/to_color2 = Color(0.984, 0.38, 0.225, 1)
+shader_parameter/threshold = 0.1
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_shf4h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_8txs1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1gyb0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_geben")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_kp830")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_bnltp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_217f7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_2bjv1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_v8nxo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_66dq7")
+}],
+"loop": false,
+"name": &"death",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_8txs1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_quxnl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qq1l0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cd3ck"]
+size = Vector2(24, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hxnt3"]
+size = Vector2(689.167, 375.333)
+
+[node name="Enemy2" type="CharacterBody2D" groups=["enemy"]]
+texture_filter = 1
+scale = Vector2(6, 6)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_otuyq")
+bullet_scene = ExtResource("2_vfdkh")
+item1_scene = ExtResource("3_i8hhf")
+item2_scene = ExtResource("4_uvehj")
+item3_scene = ExtResource("5_fe6aj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_k11hj")
+sprite_frames = SubResource("SpriteFrames_shf4h")
+frame_progress = 0.317182
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_qq1l0")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, -2)
+shape = SubResource("RectangleShape2D_cd3ck")
+
+[node name="view" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="view"]
+visible = false
+position = Vector2(0.0833435, 30.5)
+shape = SubResource("RectangleShape2D_hxnt3")
+debug_color = Color(3.36915e-07, 0.640017, 0.356203, 0.42)
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="Node2D"]
+position = Vector2(-16.6666, -9.5)
+rotation = 0.785397
+
+[node name="Marker2D2" type="Marker2D" parent="Node2D"]
+position = Vector2(-16.6667, 6.66667)
+rotation = -0.785397
+
+[node name="Marker2D3" type="Marker2D" parent="Node2D"]
+position = Vector2(-17.3333, -1.66667)
+
+[node name="Node2D2" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="Node2D2"]
+position = Vector2(15.6667, -9.49999)
+rotation = 0.785397
+
+[node name="Marker2D2" type="Marker2D" parent="Node2D2"]
+position = Vector2(15.6667, 6.66667)
+rotation = -0.785397
+
+[node name="Marker2D3" type="Marker2D" parent="Node2D2"]
+position = Vector2(16.5, -1.66667)

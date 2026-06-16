@@ -1,0 +1,63 @@
+[gd_scene load_steps=2 format=3 uid="uid://b45brjd0qktcs"]
+
+[ext_resource type="Script" uid="uid://ciw5iuueeqy3s" path="res://mp_records.gd" id="1_64wd1"]
+
+[node name="MP_history" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -703.5
+offset_right = 703.5
+offset_bottom = 705.0
+grow_horizontal = 2
+columns = 4
+script = ExtResource("1_64wd1")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -330.5
+offset_top = -171.0
+offset_right = 330.5
+offset_bottom = -37.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 50
+text = "Back"
+
+[node name="OptionButton" type="OptionButton" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -167.0
+offset_top = -312.0
+offset_right = 167.0
+offset_bottom = -200.0
+grow_horizontal = 2
+grow_vertical = 0
+selected = 0
+item_count = 3
+popup/item_0/text = "Overall"
+popup/item_0/id = 0
+popup/item_1/text = "Personal"
+popup/item_1/id = 1
+popup/item_2/text = "Personal (Wins Only)"
+popup/item_2/id = 2
+
+[connection signal="pressed" from="Button" to="GridContainer" method="_on_button_pressed"]

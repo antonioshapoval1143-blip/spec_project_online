@@ -1,0 +1,140 @@
+[gd_scene load_steps=9 format=3 uid="uid://cxxq6urtv4pdl"]
+
+[ext_resource type="Texture2D" uid="uid://d0of0d5t247rk" path="res://tileset.png" id="1_f558c"]
+[ext_resource type="PackedScene" uid="uid://ycvyf2vlhk2f" path="res://boss.tscn" id="2_4ir02"]
+[ext_resource type="PackedScene" uid="uid://dadg0erctwlqf" path="res://explosion.tscn" id="3_o4jgy"]
+[ext_resource type="PackedScene" uid="uid://imh4spvsr650" path="res://player.tscn" id="3_qnsty"]
+[ext_resource type="PackedScene" uid="uid://bo8wxmer1eh5q" path="res://projectile.tscn" id="4_7ym70"]
+[ext_resource type="Texture2D" uid="uid://jojic2nnvj8l" path="res://bg.png" id="6_8cysl"]
+[ext_resource type="PackedScene" path="res://pause.tscn" id="6_cdnmw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y6ui5"]
+size = Vector2(2661, 144)
+
+[node name="test2" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(168, 219)
+collision_layer = 15
+collision_mask = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-433, -62)
+shape = SubResource("RectangleShape2D_y6ui5")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(-438, -82)
+scale = Vector2(27.5417, 1)
+texture = ExtResource("1_f558c")
+
+[node name="Boss" parent="." node_paths=PackedStringArray("health_fill", "health_bar") instance=ExtResource("2_4ir02")]
+position = Vector2(606, -119)
+explosion_scene = ExtResource("3_o4jgy")
+bombard_count = 5
+health_fill = NodePath("../CanvasLayer/HealthBar/HealthFill")
+health_bar = NodePath("../CanvasLayer/HealthBar")
+
+[node name="Player" parent="." node_paths=PackedStringArray("health_fill1", "health_bar1", "pause") instance=ExtResource("3_qnsty")]
+position = Vector2(-1029, -176)
+bullet_scene = ExtResource("4_7ym70")
+health_fill1 = NodePath("../CanvasLayer/HealthBar2/HealthFill")
+health_bar1 = NodePath("../CanvasLayer/HealthBar2")
+pause = NodePath("CanvasLayer2/Pause")
+
+[node name="Camera2D2" type="Camera2D" parent="Player"]
+position = Vector2(-4.5, -61.167)
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.1
+drag_top_margin = 0.8
+drag_right_margin = 0.1
+drag_bottom_margin = 0.0
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="Player"]
+layer = 8
+
+[node name="Pause" parent="Player/CanvasLayer2" instance=ExtResource("6_cdnmw")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 0
+scale = Vector2(6, 6)
+transform = Transform2D(6, 0, 0, 6, 0, 0)
+
+[node name="HealthBar2" type="ColorRect" parent="CanvasLayer"]
+offset_left = 8.0
+offset_top = 10.0
+offset_right = 14.0
+offset_bottom = 49.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/HealthBar2"]
+layout_mode = 0
+offset_top = -1.0
+offset_right = 6.0
+offset_bottom = 41.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="HealthFill" type="ColorRect" parent="CanvasLayer/HealthBar2"]
+layout_direction = 1
+layout_mode = 1
+offset_left = 5.0
+offset_top = 39.3333
+offset_right = 9.0
+offset_bottom = 76.3333
+rotation = -3.14159
+metadata/_edit_use_anchors_ = true
+
+[node name="HealthBar" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.16700001
+anchor_right = 0.16700001
+offset_left = -15.327026
+offset_top = 10.0
+offset_right = -9.327026
+offset_bottom = 49.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/HealthBar"]
+layout_mode = 0
+offset_top = -1.0
+offset_right = 6.0
+offset_bottom = 41.0
+color = Color(0, 0, 0, 1)
+
+[node name="HealthFill" type="ColorRect" parent="CanvasLayer/HealthBar"]
+layout_direction = 1
+layout_mode = 1
+offset_left = 5.0
+offset_top = 39.3333
+offset_right = 9.0
+offset_bottom = 76.3333
+rotation = -3.14159
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer"]
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ParallaxBackground"]
+texture_filter = 1
+position = Vector2(306, 563)
+scale = Vector2(12, 12)
+texture = ExtResource("6_8cysl")
+
+[node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer/ParallaxBackground"]
+texture_filter = 1
+position = Vector2(1074, 563)
+scale = Vector2(12, 12)
+texture = ExtResource("6_8cysl")
+
+[node name="Sprite2D3" type="Sprite2D" parent="CanvasLayer/ParallaxBackground"]
+texture_filter = 1
+position = Vector2(1842, 563)
+scale = Vector2(12, 12)
+texture = ExtResource("6_8cysl")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+offset_left = -18.0
+offset_top = -15.0
+offset_right = 22.0
+offset_bottom = 66.0

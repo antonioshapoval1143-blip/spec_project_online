@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Script" uid="uid://cna130kaw0ru7" path="res://heat_projectile.gd" id="1_a78jb"]
+[ext_resource type="Texture2D" uid="uid://s35ucqwkthn" path="res://211_Red Effect Bullet Impact Explosion 32x32.png" id="2_b77fj"]
+[ext_resource type="Texture2D" uid="uid://ddmn4gghv8x8l" path="res://212_Red Effect Bullet Impact Explosion 32x32.png" id="3_6nyev"]
+[ext_resource type="Texture2D" uid="uid://bhlmj2jgtem6b" path="res://213_Red Effect Bullet Impact Explosion 32x32.png" id="4_f2jn1"]
+[ext_resource type="Texture2D" uid="uid://cawqr1daktokf" path="res://214_Red Effect Bullet Impact Explosion 32x32.png" id="5_ucvpb"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g8nyc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_b77fj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_6nyev")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_f2jn1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ucvpb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7fv4o"]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+texture_filter = 1
+scale = Vector2(3, 3)
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("1_a78jb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_g8nyc")
+frame_progress = 0.9051024
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_7fv4o")

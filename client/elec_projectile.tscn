@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Script" uid="uid://dkwlqqlnl8wib" path="res://elec_projectile.gd" id="1_cy32v"]
+[ext_resource type="Texture2D" uid="uid://cp1kjhmsfwjc0" path="res://306_Yellow Effect Bullet Impact Explosion 32x32.png" id="1_jyeqr"]
+[ext_resource type="Texture2D" uid="uid://byqadntpldbyc" path="res://307_Yellow Effect Bullet Impact Explosion 32x32.png" id="2_cy32v"]
+[ext_resource type="Texture2D" uid="uid://d1gc3ghbyviqm" path="res://308_Yellow Effect Bullet Impact Explosion 32x32.png" id="3_vobxk"]
+[ext_resource type="Texture2D" uid="uid://vygbnsodn85b" path="res://309_Yellow Effect Bullet Impact Explosion 32x32.png" id="4_ylsy1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q2tke"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_jyeqr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_cy32v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_vobxk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ylsy1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 18.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ayme4"]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+texture_filter = 1
+scale = Vector2(3, 3)
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("1_cy32v")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_q2tke")
+frame_progress = 0.9418745
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ayme4")

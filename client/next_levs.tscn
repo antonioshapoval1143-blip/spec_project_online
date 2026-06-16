@@ -1,0 +1,205 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmlhxq3rleeqb"]
+
+[ext_resource type="Script" uid="uid://dof1c767jnb2o" path="res://next_levs.gd" id="1_kbpaj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_s05pj"]
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_kbpaj"]
+font_size = 45
+
+[node name="NextLevs" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kbpaj")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -325.0
+offset_top = -463.25
+offset_right = 325.0
+offset_bottom = -352.75
+grow_horizontal = 2
+grow_vertical = 2
+text = "Choose next Level:"
+label_settings = SubResource("LabelSettings_s05pj")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="ColorRect" type="ColorRect" parent="Label"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="M1" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -446.0
+offset_top = -297.0
+offset_right = 446.0
+offset_bottom = -183.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "Level: Plant"
+
+[node name="M2" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -446.0
+offset_top = -137.0
+offset_right = 446.0
+offset_bottom = -23.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "Level: Sea Port"
+
+[node name="M3" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -446.0
+offset_top = 31.0
+offset_right = 446.0
+offset_bottom = 145.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "Level: E. Station"
+
+[node name="M4" type="Button" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -446.0
+offset_top = 199.0
+offset_right = 446.0
+offset_bottom = 313.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "Final Level"
+
+[node name="MenuBar" type="MenuBar" parent="."]
+layout_mode = 0
+offset_left = 91.0
+offset_top = 215.0
+offset_right = 481.0
+offset_bottom = 548.0
+prefer_global_menu = false
+
+[node name="Save_game" type="Button" parent="MenuBar"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -152.75
+offset_right = 152.75
+offset_bottom = 94.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 35
+text = "SAVE GAME"
+
+[node name="Load_game" type="Button" parent="MenuBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -152.75
+offset_top = -47.0
+offset_right = 152.75
+offset_bottom = 47.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 35
+text = "LOAD GAME"
+
+[node name="Main_menu" type="Button" parent="MenuBar"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -152.75
+offset_top = -94.0
+offset_right = 152.75
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 35
+text = "MAIN MENU"
+
+[node name="MenuBar2" type="MenuBar" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -467.0
+offset_top = 40.0
+offset_right = -47.0
+offset_bottom = 207.0
+grow_horizontal = 0
+
+[node name="Label" type="Label" parent="MenuBar2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -83.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Scores:"
+label_settings = SubResource("LabelSettings_kbpaj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Scores" type="Label" parent="MenuBar2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 84.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_kbpaj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="M1" to="." method="_on_m_1_pressed"]
+[connection signal="pressed" from="M2" to="." method="_on_m_2_pressed"]
+[connection signal="pressed" from="M3" to="." method="_on_m_3_pressed"]
+[connection signal="pressed" from="M4" to="." method="_on_m_4_pressed"]
+[connection signal="pressed" from="MenuBar/Save_game" to="." method="_on_save_game_pressed"]
+[connection signal="pressed" from="MenuBar/Load_game" to="." method="_on_load_game_pressed"]
+[connection signal="pressed" from="MenuBar/Main_menu" to="." method="_on_main_menu_pressed"]

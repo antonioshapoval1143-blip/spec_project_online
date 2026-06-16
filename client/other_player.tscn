@@ -1,0 +1,192 @@
+[gd_scene load_steps=20 format=3 uid="uid://beha87fowaxsk"]
+
+[ext_resource type="Script" uid="uid://7wu5m44goyvm" path="res://other_player.gd" id="1_s45yk"]
+[ext_resource type="Texture2D" uid="uid://doe37mxk21yr0" path="res://player_sprites/Hit.png" id="2_476up"]
+[ext_resource type="PackedScene" uid="uid://cx006wlt21ol8" path="res://remote_projectile.tscn" id="2_tpia7"]
+[ext_resource type="Texture2D" uid="uid://d2ua4ijrgrnkc" path="res://player_sprites/idle.png" id="3_ov2ra"]
+[ext_resource type="Texture2D" uid="uid://duegll551ed0m" path="res://player_sprites/jump.png" id="4_yrolk"]
+[ext_resource type="Texture2D" uid="uid://creowfygs40xb" path="res://player_sprites/run1.png" id="5_acf5l"]
+[ext_resource type="Texture2D" uid="uid://bylh82ithwwn2" path="res://player_sprites/run2.png" id="6_f7tcp"]
+[ext_resource type="Texture2D" uid="uid://0y7xulbs7yor" path="res://player_sprites/run3.png" id="7_rwhyd"]
+[ext_resource type="Texture2D" uid="uid://3xhytjuuculk" path="res://player_sprites/run4.png" id="8_23ell"]
+[ext_resource type="Texture2D" uid="uid://bu7rpyek5xmc2" path="res://player_sprites/shoot.png" id="9_ve4fu"]
+[ext_resource type="Texture2D" uid="uid://bfg08edlefkcu" path="res://player_sprites/player-shoot1.png" id="10_bl7qu"]
+[ext_resource type="Texture2D" uid="uid://dl7hq6r2b0bly" path="res://player_sprites/player-shoot2.png" id="11_ym8rx"]
+[ext_resource type="Texture2D" uid="uid://byuj5ahowajog" path="res://player_sprites/player-shoot3.png" id="12_74qo6"]
+[ext_resource type="Texture2D" uid="uid://crrk82w51j0l" path="res://player_sprites/player-shoot4.png" id="13_3djer"]
+[ext_resource type="PackedScene" uid="uid://dyst3wnomo2cx" path="res://in_game_menu.tscn" id="14_yumy3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bv4vq"]
+atlas = ExtResource("2_476up")
+region = Rect2(0, 0, 30, 29)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ui4fe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bv4vq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_476up")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_476up")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bv4vq")
+}],
+"loop": false,
+"name": &"get_hit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ov2ra")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_yrolk")
+}],
+"loop": false,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_acf5l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_f7tcp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_rwhyd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_23ell")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_ve4fu")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_bl7qu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ym8rx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_74qo6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_3djer")
+}],
+"loop": true,
+"name": &"shoot_run",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_231qv"]
+size = Vector2(16, 23)
+
+[sub_resource type="LabelSettings" id="LabelSettings_yokb2"]
+font_size = 9
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
+
+[node name="OtherPlayer" type="CharacterBody2D" groups=["player"]]
+scale = Vector2(6, 6)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_s45yk")
+bullet_scene = ExtResource("2_tpia7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -1.93715e-07)
+sprite_frames = SubResource("SpriteFrames_ui4fe")
+animation = &"shoot_run"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+texture_filter = 2
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_231qv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+texture = ExtResource("3_ov2ra")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+visible = false
+enabled = false
+drag_left_margin = 0.4
+drag_top_margin = 0.88
+drag_right_margin = 0.4
+drag_bottom_margin = 0.88
+
+[node name="HealthBar" type="ColorRect" parent="."]
+visible = false
+offset_left = -154.0
+offset_top = -85.0
+offset_right = -148.0
+offset_bottom = -46.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect" type="ColorRect" parent="HealthBar"]
+visible = false
+layout_mode = 0
+offset_top = -1.0
+offset_right = 6.0
+offset_bottom = 41.0
+color = Color(0, 0, 0, 1)
+
+[node name="HealthFill" type="ColorRect" parent="HealthBar"]
+visible = false
+layout_direction = 1
+layout_mode = 1
+offset_left = 5.0
+offset_top = 39.3333
+offset_right = 9.0
+offset_bottom = 76.3333
+rotation = -3.14159
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(13.6667, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 1000
+
+[node name="InGameMenu" parent="CanvasLayer" instance=ExtResource("14_yumy3")]
+visible = false
+
+[node name="Label" type="Label" parent="."]
+texture_filter = 2
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -56.083336
+offset_top = -23.333334
+offset_right = 56.083336
+offset_bottom = -10.333334
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "123456789012345678"
+label_settings = SubResource("LabelSettings_yokb2")
+horizontal_alignment = 1
+vertical_alignment = 1
