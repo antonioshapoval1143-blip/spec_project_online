@@ -8,7 +8,7 @@
 - Server (2 python apps: Flask REST-like API server for database connection; WebSocket server for multiplayer mode)
 
 ## How to use?
-# Warning: Use Hamachi or similar apps for correct work. Then change the URL adress in "db_connection" and "online_mode" on the server host's one before turning game on.
+# Warning: Use Hamachi or similar apps for correct work. Then change ip4 address in the URL adress in "db_connection" and "online_mode" on the server host's one before turning game on.
 
 1. Create and connect to Hamachi VPN Server (or use LAN, but be careful, the LAN and other technologies weren't tested yet);
 2. Create MySQL database named "game_data" with 4 tables (see "game_data db_diagram.png");
